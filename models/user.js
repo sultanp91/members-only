@@ -1,8 +1,8 @@
-const mongoose = require('mongoose').Schema;
+const mongoose = require('mongoose');
 const Post = require('./post');
 
 const userSchema = new mongoose.Schema({
-  name: { type: String, required: true },
+  username: { type: String, required: true },
   password: { type: String, required: true, minlength: 6 },
   authorised: { type: Boolean, default: false },
 });
