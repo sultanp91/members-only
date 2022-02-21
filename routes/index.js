@@ -5,8 +5,9 @@ const bcrypt = require('bcryptjs');
 const passport = require('passport');
 
 /* GET home page. */
+
 router.get('/', function (req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.render('index', { title: 'Express', user: req.user });
 });
 
 router.get('/sign-up', function (req, res, next) {
@@ -27,11 +28,19 @@ router.post('/sign-up', (req, res, next) => {
   });
 });
 
-router.post('log-in', (req, res, next) => {
+router.post('/log-in', (req, res, next) => {
   passport.authenticate('local', {
     successRedirect: '/',
     failureRedirect: '/',
   });
 });
+
+// router.post('/log-in', passport.authenticate('local'), (req, res, next) => {
+//   if (req.user) {
+//     res.redirect('/');
+//   } else {
+//     res.redirect('/failure');
+//   }
+// });
 
 module.exports = router;

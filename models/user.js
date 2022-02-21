@@ -4,7 +4,8 @@ const Post = require('./post');
 const userSchema = new mongoose.Schema({
   username: { type: String, required: true },
   password: { type: String, required: true, minlength: 6 },
-  authorised: { type: Boolean, default: false },
+  member: { type: Boolean, default: false },
+  admin: { type: Boolean, default: false },
 });
 
 userSchema.virtual('posts', () => {
