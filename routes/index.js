@@ -7,7 +7,11 @@ const passport = require('passport');
 /* GET home page. */
 
 router.get('/', function (req, res, next) {
-  res.render('index', { title: 'Express', user: req.user });
+  res.render('index', {
+    title: 'Members Only',
+    user: req.user,
+    message: req.flash('error'),
+  });
 });
 
 router.get('/sign-up', function (req, res, next) {
@@ -28,19 +32,25 @@ router.post('/sign-up', (req, res, next) => {
   });
 });
 
-router.post('/log-in', (req, res, next) => {
-  passport.authenticate('local', {
-    successRedirect: '/',
-    failureRedirect: '/',
+router.get('/log-in', function (req, res, next) {
+  res.render('log_in', {
+    title: 'Log in',
+    user: req.user,
+    message: req.flash('error'),
   });
 });
 
-// router.post('/log-in', passport.authenticate('local'), (req, res, next) => {
-//   if (req.user) {
-//     res.redirect('/');
-//   } else {
-//     res.redirect('/failure');
-//   }
-// });
+router.post('/log-in', (req, res, next) => {
+  passport.authenticate('local', {
+    successRedirect: '/',
+    failureRedirect: '/log-in',
+    failureFlash: true,
+  })(req, res, next);
+});
+
+router.get('/log-out', (req, res) => {
+  req.logout();
+  res.redirect('/');
+});
 
 module.exports = router;

@@ -12,6 +12,7 @@ var usersRouter = require('./routes/users');
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const User = require('./models/user');
+const flash = require('connect-flash');
 
 var app = express();
 
@@ -27,6 +28,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(session({ secret: 'meow', resave: false, saveUninitialized: true }));
 
+app.use(flash());
+
 //Passport setup
 
 passport.use(
@@ -40,10 +43,8 @@ passport.use(
       }
       bcrypt.compare(password, user.password, (err, res) => {
         if (res) {
-          // passwords match! log user in
           return done(null, user);
         } else {
-          // passwords do not match!
           return done(null, false, { message: 'Incorrect password' });
         }
       });
