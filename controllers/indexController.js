@@ -24,18 +24,26 @@ exports.postSignUp = [
     if (!errors.isEmpty()) {
       res.render('sign_up', { title: 'Sign Up', errors: errors.array() });
     }
-    User.find({ username: req.body.username });
-
-    bcrypt.hash(req.body.password, 10, (err, hashedPassword) => {
-      const user = new User({
-        username: req.body.username,
-        password: hashedPassword,
-      }).save((err) => {
-        if (err) {
-          return next(err);
-        }
-        res.redirect('/');
-      });
+    User.find({ username: req.body.username }).then((user) => {
+      console.log(user);
+      if (user.length > 0) {
+        res.render('sign_up', {
+          title: 'Sign Up',
+          errors: [{ msg: 'Already user with that username' }],
+        });
+      } else {
+        bcrypt.hash(req.body.password, 10, (err, hashedPassword) => {
+          const user = new User({
+            username: req.body.username,
+            password: hashedPassword,
+          }).save((err) => {
+            if (err) {
+              return next(err);
+            }
+            res.redirect('/');
+          });
+        });
+      }
     });
   },
 ];
