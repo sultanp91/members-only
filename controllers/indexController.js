@@ -71,13 +71,16 @@ exports.getLogOut = function (req, res) {
 };
 
 exports.getMessageForm = function (req, res, next) {
-  console.log(req.user);
-  res.render('new_post_form', {
-    title: 'Add new post',
-    errors: null,
-    formTitle: '',
-    content: '',
-  });
+  if (req.user) {
+    res.render('new_post_form', {
+      title: 'Add new post',
+      errors: null,
+      formTitle: '',
+      content: '',
+    });
+  } else {
+    res.render('forbidden_page', { title: 'Members only' });
+  }
 };
 
 exports.postMessageForm = [
