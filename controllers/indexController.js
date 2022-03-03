@@ -1,4 +1,5 @@
 const User = require('../models/user');
+const Post = require('../models/post');
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
 const { body, validationResult } = require('express-validator');
@@ -68,3 +69,44 @@ exports.getLogOut = function (req, res) {
   req.logout();
   res.redirect('/');
 };
+
+exports.getMessageForm = function (req, res, next) {
+  console.log(req.user);
+  res.render('new_post_form', {
+    title: 'Add new post',
+    errors: null,
+    formTitle: '',
+    content: '',
+  });
+};
+
+exports.postMessageForm = [
+  body('title', 'Invalid title').escape().trim().isLength({ min: 1 }),
+  body('content', 'Too short - please add more coontent')
+    .escape()
+    .trim()
+    .isLength({ min: 20 }),
+  function (req, res, next) {
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      res.render('new_post_form', {
+        title: 'Add  new post',
+        errors: errors.array(),
+        formTitle: req.body.title,
+        content: req.body.content,
+      });
+    } else {
+      const post = new Post({
+        title: req.body.title,
+        content: req.body.content,
+        author: req.user._id,
+      }).save((err) => {
+        if (err) {
+          next(err);
+        }
+        res.redirect('/');
+      });
+    }
+  },
+];

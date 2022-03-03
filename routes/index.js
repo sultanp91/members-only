@@ -16,4 +16,8 @@ router.post('/log-in', indexController.postLogIn);
 
 router.get('/log-out', indexController.getLogOut);
 
+router.get('/new-post', indexController.getMessageForm);
+
+router.post('/new-post', indexController.postMessageForm);
+
 module.exports = router;
