@@ -20,5 +20,18 @@
     <% } %>
 
     <p>Welcome to <%= title %></p>
+
+    <% for (const post of posts) { %>
+    <h2><%= post.title %></h2>
+    <p><%= post.content %></p>
+
+    <% if(user && post.author.member) { %>
+    <p>By <%= post.author.username %></p>
+    <% } else { %>
+    <p>
+      By
+      <em>Anon</em>
+    </p>
+    <% } } %>
   </body>
 </html>

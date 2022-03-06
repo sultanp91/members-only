@@ -5,11 +5,16 @@ const passport = require('passport');
 const { body, validationResult } = require('express-validator');
 
 exports.getIndex = function (req, res, next) {
-  res.render('index', {
-    title: 'Members Only',
-    user: req.user,
-    message: req.flash('error'),
-  });
+  Post.find({})
+    .populate('author')
+    .then((posts) => {
+      res.render('index', {
+        title: 'Members Only',
+        user: req.user,
+        message: req.flash('error'),
+        posts: posts,
+      });
+    });
 };
 
 exports.getSignUp = function (req, res, next) {
@@ -91,7 +96,6 @@ exports.postMessageForm = [
     .isLength({ min: 20 }),
   function (req, res, next) {
     const errors = validationResult(req);
-
     if (!errors.isEmpty()) {
       res.render('new_post_form', {
         title: 'Add  new post',
