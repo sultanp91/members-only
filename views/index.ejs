@@ -5,23 +5,8 @@
     <link rel="stylesheet" href="/stylesheets/style.css" />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <%if(user) { %>
-    <a href="/log-out">Log out</a>
-    <% } else { %>
-    <form action="/log-in" method="POST">
-      <label for="username">Username</label>
-      <input name="username" placeholder="username" type="text" />
-      <label for="password">Password</label>
-      <input name="password" type="password" />
-      <button type="submit">Log In</button>
-    </form>
-    <a href="/sign-up">Sign Up</a>
-    <% } %>
-
-    <p>Welcome to <%= title %></p>
-
-    <% for (const post of posts) { %>
+    <%- include("./partials/header.ejs") %> <%- include("./partials/navbar.ejs")
+    %> <% for (const post of posts) { %>
     <h2><%= post.title %></h2>
     <p><%= post.content %></p>
 
