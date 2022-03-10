@@ -6,17 +6,23 @@
   </head>
   <body>
     <%- include("./partials/header.ejs") %> <%- include("./partials/navbar.ejs")
-    %> <% for (const post of posts) { %>
-    <h2><%= post.title %></h2>
-    <p><%= post.content %></p>
+    %>
+    <main class="main">
+      <% for (const post of posts) { %>
+      <article class="post">
+        <h2><%= post.title %></h2>
+        <p><%= post.content %></p>
 
-    <% if(user && post.author.member) { %>
-    <p>By <%= post.author.username %></p>
-    <% } else { %>
-    <p>
-      By
-      <em>Anon</em>
-    </p>
-    <% } } %>
+        <% if(user && post.author.member) { %>
+        <p>By <%= post.author.username %></p>
+        <% } else { %>
+        <p>
+          By
+          <em>Anon</em>
+        </p>
+        <% } %>
+      </article>
+      <% } %>
+    </main>
   </body>
 </html>
