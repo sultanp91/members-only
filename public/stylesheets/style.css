@@ -28,3 +28,9 @@ a {
   max-width: 80rem;
   margin: 2rem auto;
 }
+
+.log-in {
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
