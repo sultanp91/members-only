@@ -18,7 +18,7 @@ exports.getIndex = function (req, res, next) {
 };
 
 exports.getSignUp = function (req, res, next) {
-  res.render('sign_up', { title: 'Sign Up', errors: null });
+  res.render('sign_up', { title: 'Sign Up', user: req.user, errors: null });
 };
 
 exports.postSignUp = [

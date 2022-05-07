@@ -34,3 +34,7 @@ a {
   align-items: center;
   gap: 1rem;
 }
+
+.log-in-form input:first-of-type {
+  margin-right: 1.5rem;
+}

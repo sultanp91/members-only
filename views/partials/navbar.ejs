@@ -1,11 +1,10 @@
 <ul class="nav-list <%= user ? "logged-in" : "log-in"%>">
   <% if(user){ %>
-  <li><a href="/member-access">Member access</a></li>
-  <li><a href="/admin-access">Admin access</a></li>
+  <li><a href="/membership">Membership</a></li>
   <li><a href="/log-out">Log out</a></li>
   <% } else { %>
   <li>
-    <form action="/log-in" method="POST">
+    <form class="log-in-form" action="/log-in" method="POST">
       <label for="username">Username</label>
       <input name="username" placeholder="username" type="text" />
       <label for="password">Password</label>
