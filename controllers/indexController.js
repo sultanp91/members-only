@@ -82,9 +82,10 @@ exports.getMessageForm = function (req, res, next) {
       errors: null,
       formTitle: '',
       content: '',
+      user: req.user,
     });
   } else {
-    res.render('forbidden_page', { title: 'Members only' });
+    res.render('forbidden_page', { title: 'Members only', user: null });
   }
 };
 
@@ -117,3 +118,14 @@ exports.postMessageForm = [
     }
   },
 ];
+
+exports.getMembershipPage = function (req, res, next) {
+  if (req.user) {
+    res.render('membership', {
+      title: 'Membership Privileges',
+      user: req.user,
+    });
+  } else {
+    res.render('forbidden_page', { title: 'Members only', user: null });
+  }
+};

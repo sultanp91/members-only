@@ -20,4 +20,6 @@ router.get('/new-post', indexController.getMessageForm);
 
 router.post('/new-post', indexController.postMessageForm);
 
+router.get('/membership', indexController.getMembershipPage);
+
 module.exports = router;
