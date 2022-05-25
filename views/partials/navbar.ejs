@@ -4,13 +4,7 @@
   <li><a href="/log-out">Log out</a></li>
   <% } else { %>
   <li>
-    <form class="log-in-form" action="/log-in" method="POST">
-      <label for="username">Username</label>
-      <input name="username" placeholder="username" type="text" />
-      <label for="password">Password</label>
-      <input name="password" type="password" />
-      <button type="submit">Log In</button>
-    </form>
+<a href="/log-in">Log in</a>
   </li>
   <li><a href="/sign-up">Sign Up</a></li>
   <% } %>

@@ -14,9 +14,13 @@ a {
 }
 
 .nav-list {
+  display: block;
+  max-width: 90%;
+  margin: 0 auto;
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-end;
   list-style: none;
+  gap: 1rem;
 }
 
 .main {
@@ -27,14 +31,4 @@ a {
   width: 95%;
   max-width: 80rem;
   margin: 2rem auto;
-}
-
-.log-in {
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-}
-
-.log-in-form input:first-of-type {
-  margin-right: 1.5rem;
 }
