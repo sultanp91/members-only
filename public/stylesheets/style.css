@@ -32,3 +32,26 @@ a {
   max-width: 80rem;
   margin: 2rem auto;
 }
+
+/* Sign Up form */
+
+.sign-up-form {
+  display: block;
+  max-width: 40rem;
+  width: 95%;
+  margin: 3rem auto;
+  padding: 0.5rem;
+}
+
+.sign-up-form > label {
+  display: block;
+  padding: 1rem 0;
+  font-size: 1.4rem;
+}
+
+.sign-up-form > input {
+  display: block;
+  width: 100%;
+  padding: 0.5rem 0;
+  font-size: 1.6rem;
+}
