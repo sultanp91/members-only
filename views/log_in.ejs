@@ -6,11 +6,11 @@
   </head>
   <body>
     <%- include("./partials/header.ejs") %> <% if(!user) {%>
-    <form action="/log-in" method="POST">
-      <label for="username">Username</label>
-      <input name="username" placeholder="username" type="text" />
-      <label for="password">Password</label>
-      <input name="password" type="password" />
+    <form action="/log-in" method="POST" class="form">
+      <label for="username">Username:</label>
+      <input name="username" placeholder="Username" type="text" />
+      <label for="password">Password:</label>
+      <input name="password" type="password" placeholder="Password" />
       <button type="submit">Log In</button>
     </form>
     <%} else { %>
