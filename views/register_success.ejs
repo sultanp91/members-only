@@ -9,11 +9,15 @@
   </head>
   <body>
     <%- include("./partials/header.ejs") %>
-    <p>You have successfully registered.</p>
+    <p>
+      You have successfully registered. Click
+      <a href="/">here</a>
+      if you aren't successfully redirected.
+    </p>
   </body>
   <script>
     setTimeout(function () {
       window.location = '/';
-    }, 2000);
+    }, 2500);
   </script>
 </html>

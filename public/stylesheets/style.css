@@ -17,14 +17,21 @@ a {
   font-weight: 600;
 }
 
-.nav-list {
-  display: block;
-  max-width: 90%;
-  margin: 0 auto;
+.nav {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.nav h3 {
+  font-size: 2rem;
+}
+
+.nav-list {
+  display: flex;
   list-style: none;
-  gap: 1rem;
+  gap: 1.5rem;
+  font-size: 1.6rem;
 }
 
 .main {
