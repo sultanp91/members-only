@@ -46,13 +46,19 @@ exports.postSignUp = [
             if (err) {
               return next(err);
             }
-            res.redirect('/');
+            res.redirect('/success');
           });
         });
       }
     });
   },
 ];
+
+exports.getSuccessPage = function (req, res, next) {
+  res.render('register_success', {
+    title: 'Success',
+  });
+};
 
 exports.getLogIn = function (req, res, next) {
   res.render('log_in', {

@@ -10,6 +10,8 @@ router.get('/sign-up', indexController.getSignUp);
 
 router.post('/sign-up', indexController.postSignUp);
 
+router.get('/success', indexController.getSuccessPage);
+
 router.get('/log-in', indexController.getLogIn);
 
 router.post('/log-in', indexController.postLogIn);
