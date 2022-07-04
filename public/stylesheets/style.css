@@ -2,29 +2,37 @@ html {
   font-size: 62.5%;
 }
 
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+}
+
 body {
   font: 14px 'Lucida Grande', Helvetica, Arial, sans-serif;
 }
 
 a {
-  color: #00b7ff;
-}
-
-.header {
-  font-size: 2.4rem;
-  padding: 2rem 0;
-  text-align: center;
-  font-weight: 600;
+  /* color: #00b7ff; */
+  color: #007afc;
 }
 
 .nav {
   display: flex;
   justify-content: space-between;
-  padding: 1rem;
+  align-items: center;
+  padding: 2rem 1rem;
+  border-bottom: solid 2px #e5e5e5;
 }
 
 .nav h3 {
-  font-size: 2rem;
+  font-size: 3rem;
+  color: #007afc;
+}
+
+.nav a {
+  text-decoration: none;
 }
 
 .nav-list {
@@ -34,8 +42,19 @@ a {
   font-size: 1.6rem;
 }
 
+.nav-list a {
+  color: #fff;
+  padding: 0.7rem 1.2rem;
+  background-color: #007afc;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
 .main {
   padding: 2rem 0;
+  background-color: #f8f8f8;
+  min-height: 90vh;
 }
 
 .post {
@@ -76,4 +95,8 @@ a {
   padding: 0.5rem 0;
   font-size: 1.8rem;
   width: 100%;
+}
+
+.main {
+  padding: 2rem;
 }

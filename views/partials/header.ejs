@@ -1,1 +1,16 @@
-<header class="header"><%= title %></header>
+<nav class="nav">
+    <h3><a href="/">Members Only</a></h3>
+    <ul class="nav-list <%= user ? "logged-in" : "log-in"%>">
+      <% if(user){ %>
+      <li><a href="/membership">Membership</a></li>
+      <li><a href="/log-out">Log out</a></li>
+      <% } else { %>
+      <li>
+    <a href="/log-in">Log in</a>
+      </li>
+      <li><a href="/sign-up">Sign Up</a></li>
+      <% } %>
+    </ul>
+  </nav>
+  
+  
