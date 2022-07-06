@@ -52,15 +52,18 @@ a {
 }
 
 .main {
-  padding: 2rem 0;
   background-color: #f8f8f8;
   min-height: 90vh;
+  padding: 2rem;
 }
 
 .post {
   width: 95%;
-  max-width: 80rem;
+  max-width: 90rem;
   margin: 2rem auto;
+  border: solid 1px #aba8a8;
+  border-radius: 5px;
+  padding: 1.5rem 1rem;
 }
 
 /* Sign Up form */
@@ -101,8 +104,4 @@ a {
   color: #fff;
   border-radius: 5px;
   border: none;
-}
-
-.main {
-  padding: 2rem;
 }
