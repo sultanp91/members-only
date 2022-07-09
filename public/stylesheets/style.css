@@ -105,3 +105,9 @@ a {
   border-radius: 5px;
   border: none;
 }
+
+/* Membership page  */
+
+.membership-page h2 {
+  text-align: center;
+}
