@@ -106,6 +106,12 @@ a {
   border: none;
 }
 
+.sign-up-errors {
+  padding-top: 1.5rem;
+  list-style: none;
+  color: firebrick;
+}
+
 /* Membership page  */
 
 .membership-page h2 {

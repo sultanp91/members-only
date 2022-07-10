@@ -22,7 +22,7 @@
         />
         <button type="submit">Sign Up</button>
         <% if(errors){ %>
-        <ul>
+        <ul class="sign-up-errors">
           <% for (const err of errors){ %>
           <li><%= err.msg %></li>
           <% } %>

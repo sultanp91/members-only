@@ -22,13 +22,22 @@ exports.getSignUp = function (req, res, next) {
 };
 
 exports.postSignUp = [
-  body('username', 'Invalid username').escape().trim(),
-  body('password', 'Invalid username').trim().isLength({ min: 6 }),
+  body(
+    'username',
+    'Invalid username - usernames must only contain letters and numbers'
+  )
+    .escape()
+    .isAlphanumeric('en-GB')
+    .trim(),
+  body('password', 'Invalid password').trim().isLength({ min: 6 }),
   function (req, res, next) {
     const errors = validationResult(req);
-
     if (!errors.isEmpty()) {
-      res.render('sign_up', { title: 'Sign Up', errors: errors.array() });
+      res.render('sign_up', {
+        title: 'Sign Up',
+        errors: errors.array(),
+        user: req.user,
+      });
     }
     User.find({ username: req.body.username }).then((user) => {
       console.log(user);
@@ -36,6 +45,7 @@ exports.postSignUp = [
         res.render('sign_up', {
           title: 'Sign Up',
           errors: [{ msg: 'Already user with that username' }],
+          user: req.user,
         });
       } else {
         bcrypt.hash(req.body.password, 10, (err, hashedPassword) => {
@@ -57,6 +67,7 @@ exports.postSignUp = [
 exports.getSuccessPage = function (req, res, next) {
   res.render('register_success', {
     title: 'Success',
+    user: req.user,
   });
 };
 
