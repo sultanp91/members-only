@@ -8,6 +8,11 @@
     <%- include("./partials/header.ejs") %>
 
     <div class="main">
+      <div class="header-text">
+        <h4>
+          Log in to post new messages and become part of the members only club.
+        </h4>
+      </div>
       <% if(!user) {%>
       <form action="/log-in" method="POST" class="form">
         <label for="username">Username:</label>

@@ -66,6 +66,9 @@ a {
   padding: 1.5rem 1rem;
 }
 
+.header-text {
+  text-align: center;
+}
 /* Sign Up form */
 
 .form {
