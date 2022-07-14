@@ -146,3 +146,25 @@ exports.getMembershipPage = function (req, res, next) {
     res.render('forbidden_page', { title: 'Members only', user: null });
   }
 };
+
+exports.getMemberForm = function (req, res, next) {
+  if (req.user) {
+    res.render('members_form_page', {
+      title: 'Member Access',
+      user: req.user,
+    });
+  } else {
+    res.render('forbidden_page', { title: 'Members only', user: null });
+  }
+};
+
+exports.getAdminForm = function (req, res, next) {
+  if (req.user) {
+    res.render('admin_form_page', {
+      title: 'Admin Access',
+      user: req.user,
+    });
+  } else {
+    res.render('forbidden_page', { title: 'Members only', user: null });
+  }
+};
