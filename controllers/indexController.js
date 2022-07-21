@@ -3,6 +3,7 @@ const Post = require('../models/post');
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
 const { body, validationResult } = require('express-validator');
+const e = require('connect-flash');
 
 exports.getIndex = function (req, res, next) {
   Post.find({})
@@ -152,11 +153,39 @@ exports.getMemberForm = function (req, res, next) {
     res.render('members_form_page', {
       title: 'Member Access',
       user: req.user,
+      incorrectPassword: false,
     });
   } else {
     res.render('forbidden_page', { title: 'Members only', user: null });
   }
 };
+
+exports.postMemberForm = [
+  body('password', 'Invalid title').escape().trim(),
+  function (req, res, next) {
+    const errors = validationResult(req);
+    if (!errors.isEmpty() || req.body.password !== 'topsecret') {
+      res.render('members_form_page', {
+        title: 'Member Access',
+        user: req.user,
+        incorrectPassword: true,
+      });
+    } else if (req.body.password === 'topsecret') {
+      User.findByIdAndUpdate(
+        req.user._id,
+        { member: true },
+        function (err, user) {
+          if (err) {
+            console.log(error);
+          } else {
+            console.log(user);
+            res.redirect('/');
+          }
+        }
+      );
+    }
+  },
+];
 
 exports.getAdminForm = function (req, res, next) {
   if (req.user) {

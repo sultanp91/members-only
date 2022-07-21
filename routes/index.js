@@ -26,6 +26,8 @@ router.get('/membership', indexController.getMembershipPage);
 
 router.get('/enable-membership', indexController.getMemberForm);
 
+router.post('/enable-membership', indexController.postMemberForm);
+
 router.get('/enable-admin', indexController.getAdminForm);
 
 module.exports = router;
