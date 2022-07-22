@@ -13,7 +13,10 @@
         <p><%= post.content %></p>
 
         <% if(user && post.author.member) { %>
-        <p>By <%= post.author.username %></p>
+        <p>
+          By
+          <em><%= post.author.username %></em>
+        </p>
         <% } else { %>
         <p>
           By
