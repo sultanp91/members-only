@@ -28,6 +28,8 @@ router.get('/enable-membership', indexController.getMemberForm);
 
 router.post('/enable-membership', indexController.postMemberForm);
 
+router.get('/member-success', indexController.getMemberSuccess);
+
 router.get('/enable-admin', indexController.getAdminForm);
 
 module.exports = router;

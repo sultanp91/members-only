@@ -161,7 +161,7 @@ exports.getMemberForm = function (req, res, next) {
 };
 
 exports.postMemberForm = [
-  body('password', 'Invalid title').escape().trim(),
+  body('password', 'Incorrect password').escape().trim(),
   function (req, res, next) {
     const errors = validationResult(req);
     if (!errors.isEmpty() || req.body.password !== 'topsecret') {
@@ -178,6 +178,55 @@ exports.postMemberForm = [
           if (err) {
             console.log(error);
           } else {
+            res.redirect('/member-success');
+          }
+        }
+      );
+    }
+  },
+];
+
+exports.getMemberSuccess = function (req, res, next) {
+  if (req.user && req.user.member) {
+    res.render('member_sucess', {
+      title: 'Successful membership',
+      user: req.user,
+    });
+  } else {
+    res.render('forbidden_page', { title: 'Members only', user: null });
+  }
+};
+
+exports.getAdminForm = function (req, res, next) {
+  if (req.user) {
+    res.render('admin_form_page', {
+      title: 'Admin Access',
+      user: req.user,
+      incorrectPassword: false,
+    });
+  } else {
+    res.render('forbidden_page', { title: 'Members only', user: null });
+  }
+};
+
+exports.postAdminForm = [
+  body('password', 'Incorrect password').escape().trim(),
+  function (req, res, next) {
+    const errors = validationResult(req);
+    if (!errors.isEmpty() || req.body.password !== 'topsecret') {
+      res.render('admin_form_page', {
+        title: 'Admin Access',
+        user: req.user,
+        incorrectPassword: true,
+      });
+    } else if (req.body.password === 'supertopsecret') {
+      User.findByIdAndUpdate(
+        req.user._id,
+        { admin: true },
+        function (err, user) {
+          if (err) {
+            console.log(error);
+          } else {
             console.log(user);
             res.redirect('/');
           }
@@ -186,14 +235,3 @@ exports.postMemberForm = [
     }
   },
 ];
-
-exports.getAdminForm = function (req, res, next) {
-  if (req.user) {
-    res.render('admin_form_page', {
-      title: 'Admin Access',
-      user: req.user,
-    });
-  } else {
-    res.render('forbidden_page', { title: 'Members only', user: null });
-  }
-};
