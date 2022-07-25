@@ -188,7 +188,7 @@ exports.postMemberForm = [
 
 exports.getMemberSuccess = function (req, res, next) {
   if (req.user && req.user.member) {
-    res.render('member_sucess', {
+    res.render('member_success', {
       title: 'Successful membership',
       user: req.user,
     });
@@ -228,10 +228,21 @@ exports.postAdminForm = [
             console.log(error);
           } else {
             console.log(user);
-            res.redirect('/');
+            res.redirect('/admin-success');
           }
         }
       );
     }
   },
 ];
+
+exports.getAdminSuccess = function (req, res, next) {
+  if (req.user && req.user.admin) {
+    res.render('admin_success', {
+      title: 'Successful Admin Priveleg',
+      user: req.user,
+    });
+  } else {
+    res.render('forbidden_page', { title: 'Members only', user: null });
+  }
+};
