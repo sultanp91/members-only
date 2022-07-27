@@ -149,11 +149,16 @@ exports.getMembershipPage = function (req, res, next) {
 };
 
 exports.getMemberForm = function (req, res, next) {
-  if (req.user) {
+  if (req.user && !req.user.member) {
     res.render('members_form_page', {
       title: 'Member Access',
       user: req.user,
       incorrectPassword: false,
+    });
+  } else if (req.user && req.user.member) {
+    res.render('member_denial', {
+      title: 'Member Access',
+      user: req.user,
     });
   } else {
     res.render('forbidden_page', { title: 'Members only', user: null });
@@ -198,11 +203,16 @@ exports.getMemberSuccess = function (req, res, next) {
 };
 
 exports.getAdminForm = function (req, res, next) {
-  if (req.user) {
+  if (req.user && !req.user.admin) {
     res.render('admin_form_page', {
       title: 'Admin Access',
       user: req.user,
       incorrectPassword: false,
+    });
+  } else if (req.user && !req.user.admin) {
+    res.render('admin_denial', {
+      title: 'Admin Access',
+      user: req.user,
     });
   } else {
     res.render('forbidden_page', { title: 'Members only', user: null });
@@ -213,7 +223,7 @@ exports.postAdminForm = [
   body('password', 'Incorrect password').escape().trim(),
   function (req, res, next) {
     const errors = validationResult(req);
-    if (!errors.isEmpty() || req.body.password !== 'topsecret') {
+    if (req.body.password !== 'supertopsecret') {
       res.render('admin_form_page', {
         title: 'Admin Access',
         user: req.user,
@@ -232,6 +242,8 @@ exports.postAdminForm = [
           }
         }
       );
+    } else {
+      console.log('here;s the problem');
     }
   },
 ];
@@ -239,7 +251,7 @@ exports.postAdminForm = [
 exports.getAdminSuccess = function (req, res, next) {
   if (req.user && req.user.admin) {
     res.render('admin_success', {
-      title: 'Successful Admin Priveleg',
+      title: 'Successful Admin Privelege',
       user: req.user,
     });
   } else {

@@ -32,6 +32,8 @@ router.get('/member-success', indexController.getMemberSuccess);
 
 router.get('/enable-admin', indexController.getAdminForm);
 
+router.post('/enable-admin', indexController.postAdminForm);
+
 router.get('/admin-success', indexController.getAdminSuccess);
 
 module.exports = router;
