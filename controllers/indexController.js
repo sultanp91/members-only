@@ -223,7 +223,7 @@ exports.postAdminForm = [
   body('password', 'Incorrect password').escape().trim(),
   function (req, res, next) {
     const errors = validationResult(req);
-    if (req.body.password !== 'supertopsecret') {
+    if (!errors.isEmpty() || req.body.password !== 'supertopsecret') {
       res.render('admin_form_page', {
         title: 'Admin Access',
         user: req.user,
@@ -242,8 +242,6 @@ exports.postAdminForm = [
           }
         }
       );
-    } else {
-      console.log('here;s the problem');
     }
   },
 ];

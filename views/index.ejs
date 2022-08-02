@@ -22,6 +22,10 @@
           By
           <em>Anon</em>
         </p>
+        <% } %> <% if(user && user.admin){ %>
+        <form action="/delete/<%= post._id %>" method="delete">
+          <button type="submit">Delete</button>
+        </form>
         <% } %>
       </article>
       <% } %>
