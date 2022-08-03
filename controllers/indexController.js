@@ -256,3 +256,18 @@ exports.getAdminSuccess = function (req, res, next) {
     res.render('forbidden_page', { title: 'Members only', user: null });
   }
 };
+
+exports.deletePost = function (req, res, next) {
+  if (user && user.admin) {
+    const id = req.params.id;
+    Post.findByIdAndDelete(id, function (err, result) {
+      if (err) {
+        console.log(err);
+      } else {
+        res.redirect('/');
+      }
+    });
+  } else {
+    res.redirect('/');
+  }
+};
