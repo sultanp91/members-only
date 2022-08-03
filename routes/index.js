@@ -36,4 +36,6 @@ router.post('/enable-admin', indexController.postAdminForm);
 
 router.get('/admin-success', indexController.getAdminSuccess);
 
+router.post('/delete/:id', indexController.deletePost);
+
 module.exports = router;

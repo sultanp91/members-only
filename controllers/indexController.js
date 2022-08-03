@@ -258,7 +258,7 @@ exports.getAdminSuccess = function (req, res, next) {
 };
 
 exports.deletePost = function (req, res, next) {
-  if (user && user.admin) {
+  if (req.user && req.user.admin) {
     const id = req.params.id;
     Post.findByIdAndDelete(id, function (err, result) {
       if (err) {
