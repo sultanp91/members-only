@@ -116,8 +116,33 @@ a {
   color: firebrick;
 }
 
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48;
+}
+
+.index-new-post {
+  font-size: 1.8rem;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  text-decoration: none;
+}
+
 /* Membership page  */
 
 .membership-page h2 {
   text-align: center;
+}
+
+.membership-page-list {
+  list-style: none;
+  font-size: 2rem;
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.membership-page-list li {
+  margin-bottom: 1.5rem;
 }
