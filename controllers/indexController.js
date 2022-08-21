@@ -121,6 +121,7 @@ exports.postMessageForm = [
         errors: errors.array(),
         formTitle: req.body.title,
         content: req.body.content,
+        user: req.user,
       });
     } else {
       const post = new Post({
