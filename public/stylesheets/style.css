@@ -67,6 +67,18 @@ a {
   padding: 1.5rem 1rem;
 }
 
+.post > * {
+  padding: 0.2rem;
+}
+
+.delete-button {
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  border: none;
+  background-color: rebeccapurple;
+  color: #fff;
+  cursor: pointer;
+}
 .header-text {
   text-align: center;
 }
