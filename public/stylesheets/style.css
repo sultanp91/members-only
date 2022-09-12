@@ -98,7 +98,8 @@ a {
   font-size: 1.6rem;
 }
 
-.form > input {
+.form > input,
+.form > textarea {
   display: block;
   width: 100%;
   padding: 0.7rem 0;
@@ -108,7 +109,8 @@ a {
   border-radius: 5px;
 }
 
-.form > input:last-of-type {
+.form > input:last-of-type,
+.form > textarea {
   margin-bottom: 1.5rem;
 }
 
@@ -141,6 +143,10 @@ a {
   justify-content: center;
   gap: 1rem;
   text-decoration: none;
+}
+
+.header {
+  text-align: center;
 }
 
 /* Membership page  */

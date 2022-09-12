@@ -96,7 +96,7 @@ exports.getLogOut = function (req, res) {
 exports.getMessageForm = function (req, res, next) {
   if (req.user) {
     res.render('new_post_form', {
-      title: 'Add new post',
+      title: 'Make New Post',
       errors: null,
       formTitle: '',
       content: '',
@@ -210,7 +210,7 @@ exports.getAdminForm = function (req, res, next) {
       user: req.user,
       incorrectPassword: false,
     });
-  } else if (req.user && !req.user.admin) {
+  } else if (req.user && req.user.admin) {
     res.render('admin_denial', {
       title: 'Admin Access',
       user: req.user,
