@@ -112,7 +112,7 @@ exports.postMessageForm = [
   body('content', 'Too short - please add more coontent')
     .escape()
     .trim()
-    .isLength({ min: 20 }),
+    .isLength({ min: 5 }),
   function (req, res, next) {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {

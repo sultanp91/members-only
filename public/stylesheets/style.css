@@ -98,8 +98,7 @@ a {
   font-size: 1.6rem;
 }
 
-.form > input,
-.form > textarea {
+.form > input {
   display: block;
   width: 100%;
   padding: 0.7rem 0;
@@ -109,9 +108,12 @@ a {
   border-radius: 5px;
 }
 
-.form > input:last-of-type,
-.form > textarea {
+.form > input:last-of-type {
   margin-bottom: 1.5rem;
+}
+
+#content {
+  height: 4rem;
 }
 
 .form button {
