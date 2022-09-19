@@ -109,7 +109,7 @@ exports.getMessageForm = function (req, res, next) {
 
 exports.postMessageForm = [
   body('title', 'Invalid title').escape().trim().isLength({ min: 1 }),
-  body('content', 'Too short - please add more coontent')
+  body('content', 'Message is too short - please add more coontent')
     .escape()
     .trim()
     .isLength({ min: 5 }),

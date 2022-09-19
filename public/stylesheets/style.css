@@ -101,7 +101,7 @@ a {
 .form > input {
   display: block;
   width: 100%;
-  padding: 0.7rem 0;
+  padding: 0.5rem;
   font-size: 1.6rem;
   text-indent: 0.3rem;
   border: solid 1px #e5e5e5;
@@ -110,10 +110,14 @@ a {
 
 .form > input:last-of-type {
   margin-bottom: 1.5rem;
+  font-size: 1.6rem;
 }
 
 #content {
-  height: 4rem;
+  height: 10rem;
+  width: 100%;
+  margin-bottom: 1.5rem;
+  padding: 0.5rem;
 }
 
 .form button {

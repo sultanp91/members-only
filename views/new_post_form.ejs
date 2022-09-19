@@ -12,8 +12,15 @@
         <label for="title">Title:</label>
         <input type="text" name="title" id="title" value="<%= formTitle %>" />
         <label for="content">Message:</label>
-        <input name="content" id="content" value="<%= content %>" />
+        <textarea name="content" id="content"></textarea>
         <button type="submit">Post</button>
+        <% if(errors){ %>
+        <ul class="sign-up-errors">
+          <% for (const err of errors){ %>
+          <li><%= err.msg %></li>
+          <% } %>
+        </ul>
+        <% } %>
       </form>
     </div>
   </body>
