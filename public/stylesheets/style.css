@@ -130,6 +130,10 @@ a {
   border: none;
 }
 
+.form button:hover {
+  cursor: pointer;
+}
+
 .sign-up-errors {
   padding-top: 1.5rem;
   list-style: none;
